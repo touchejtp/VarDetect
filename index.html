@@ -17,17 +17,31 @@ text {
 <script src="build/muts-needle-plot.js"></script>
 <script src="src/js/dependencies/d3.js"></script>
 <script>
-
+   ENSP = "ENSP00000439902.json"
+//   ENSP = "ENSP00000418960.json"
+    regdat = ['snippets/data/', ENSP].join('')
+    mutdat = ['snippets/data/PTM_', ENSP].join('')
     colorMap = {
         // mutation categories
         "missense_variant": "yellow",
         "frameshift_variant": "blue",
         "stop_gained": "red",
-        "stop_lost": "orange",
+        "stop_lost": "red",
+	"start_lost": "red",
         "synonymous_variant": "lightblue",
         // regions
-        "X-binding": "olive",
-        "region1": "olive"
+	"Phosphorylation": "green"
+	//"BRCA2 repeat": "orange",
+	//"-": "orange"
+	//"BRCA2 repeat": "yellow"
+        //"Tower": "blue",
+        //"BRCA2, helical": "red",
+        //"BRCA2, oligonucleotide/oligosaccharide-binding, domain 1": "orange",
+        //"BRCA2, oligonucleotide/oligosaccharide-binding 1": "orange",
+        //"BRCA2, oligonucleotide/oligosaccharide-binding, domain 3": "lightblue",
+        //"BRCA2, oligonucleotide/oligosaccharide-binding 3": "lightblue",
+        //"Nucleic acid-binding, OB-fold": "red",
+	//"DNA recombination/repair protein BRCA2, helical domain": "black"
     };
 
     legends = {
@@ -37,13 +51,13 @@ text {
 
     //Crate config Object
     plotConfig = {
-        maxCoord :      350,
+        maxCoord :      4000,
         minCoord :      0,
         height:         450,
         targetElement : "yourDiv",
-        mutationData:   "snippets/data/muts.json",
+        mutationData:   mutdat,
         //mutationData:   [{"category": "test", "coord": "99", "value": 77}],
-        regionData:     "snippets/data/regions.json",
+        regionData:     regdat,
         //regionData:     {"beautiful-region": "99-199"},
         colorMap:       colorMap,
         legends:        legends
